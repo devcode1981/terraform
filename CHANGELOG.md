@@ -1,31 +1,31 @@
-## 1.4.0 (Unreleased)
+## 1.12.0 (Unreleased)
 
-BUG FIXES:
-
-* The module installer will now record in its manifest a correct module source URL after normalization when the URL given as input contains both a query string portion and a subdirectory portion. Terraform itself doesn't currently make use of this information and so this is just a cosmetic fix to make the recorded metadata more correct. [GH-31636]
-
-ENHANCEMENTS:
-
-* The "Failed to install provider" error message now includes the reason a provider could not be installed. [GH-31898]
-* backend/gcs: Add `kms_encryption_key` argument, to allow encryption of state files using Cloud KMS keys. [GH-24967]
-* backend/gcs: Add `storage_custom_endpoint` argument, to allow communication with the backend via a Private Service Connect endpoint. [GH-28856]
 
 EXPERIMENTS:
 
-* Since its introduction the `yamlencode` function's documentation carried a warning that it was experimental. This predated our more formalized idea of language experiments and so wasn't guarded by an explicit opt-in, but the intention was to allow for small adjustments to its behavior if we learned it was producing invalid YAML in some cases, due to the relative complexity of the YAML specification.
+Experiments are only enabled in alpha releases of Terraform CLI. The following features are not yet available in stable releases.
 
-    From Terraform v1.4 onwards, `yamlencode` is no longer documented as experimental and is now subject to the Terraform v1.x Compatibility Promises. There are no changes to its previous behavior in v1.3 and so no special action is required when upgrading.
+- The new command `terraform rpcapi` exposes some Terraform Core functionality through an RPC interface compatible with [`go-plugin`](https://github.com/hashicorp/go-plugin). The exact RPC API exposed here is currently subject to change at any time, because it's here primarily as a vehicle to support the [Terraform Stacks](https://www.hashicorp.com/blog/terraform-stacks-explained) private preview and so will be broken if necessary to respond to feedback from private preview participants, or possibly for other reasons. Do not use this mechanism yet outside of Terraform Stacks private preview.
+- The experimental "deferred actions" feature, enabled by passing the `-allow-deferral` option to `terraform plan`, permits `count` and `for_each` arguments in `module`, `resource`, and `data` blocks to have unknown values and allows providers to react more flexibly to unknown values. This experiment is under active development, and so it's not yet useful to participate in this experiment
 
 ## Previous Releases
 
-For information on prior major and minor releases, see their changelogs:
+For information on prior major and minor releases, refer to their changelogs:
 
-* [v1.3](https://github.com/hashicorp/terraform/blob/v1.3/CHANGELOG.md)
-* [v1.2](https://github.com/hashicorp/terraform/blob/v1.2/CHANGELOG.md)
-* [v1.1](https://github.com/hashicorp/terraform/blob/v1.1/CHANGELOG.md)
-* [v1.0](https://github.com/hashicorp/terraform/blob/v1.0/CHANGELOG.md)
-* [v0.15](https://github.com/hashicorp/terraform/blob/v0.15/CHANGELOG.md)
-* [v0.14](https://github.com/hashicorp/terraform/blob/v0.14/CHANGELOG.md)
-* [v0.13](https://github.com/hashicorp/terraform/blob/v0.13/CHANGELOG.md)
-* [v0.12](https://github.com/hashicorp/terraform/blob/v0.12/CHANGELOG.md)
-* [v0.11 and earlier](https://github.com/hashicorp/terraform/blob/v0.11/CHANGELOG.md)
+- [v1.11](https://github.com/hashicorp/terraform/blob/v1.11/CHANGELOG.md)
+- [v1.10](https://github.com/hashicorp/terraform/blob/v1.10/CHANGELOG.md)
+- [v1.9](https://github.com/hashicorp/terraform/blob/v1.9/CHANGELOG.md)
+- [v1.8](https://github.com/hashicorp/terraform/blob/v1.8/CHANGELOG.md)
+- [v1.7](https://github.com/hashicorp/terraform/blob/v1.7/CHANGELOG.md)
+- [v1.6](https://github.com/hashicorp/terraform/blob/v1.6/CHANGELOG.md)
+- [v1.5](https://github.com/hashicorp/terraform/blob/v1.5/CHANGELOG.md)
+- [v1.4](https://github.com/hashicorp/terraform/blob/v1.4/CHANGELOG.md)
+- [v1.3](https://github.com/hashicorp/terraform/blob/v1.3/CHANGELOG.md)
+- [v1.2](https://github.com/hashicorp/terraform/blob/v1.2/CHANGELOG.md)
+- [v1.1](https://github.com/hashicorp/terraform/blob/v1.1/CHANGELOG.md)
+- [v1.0](https://github.com/hashicorp/terraform/blob/v1.0/CHANGELOG.md)
+- [v0.15](https://github.com/hashicorp/terraform/blob/v0.15/CHANGELOG.md)
+- [v0.14](https://github.com/hashicorp/terraform/blob/v0.14/CHANGELOG.md)
+- [v0.13](https://github.com/hashicorp/terraform/blob/v0.13/CHANGELOG.md)
+- [v0.12](https://github.com/hashicorp/terraform/blob/v0.12/CHANGELOG.md)
+- [v0.11 and earlier](https://github.com/hashicorp/terraform/blob/v0.11/CHANGELOG.md)
